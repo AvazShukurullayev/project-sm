@@ -11,7 +11,7 @@
           <FilterMovie />
         </div>
         <MovieList :movies="movies" />
-        <MovieAddForm />
+        <MovieAddForm @createMovieItem="createMovieItem"/>
       </div>
     </div>
   </div>
@@ -49,6 +49,11 @@ export default {
         },
       ],
     };
+  },
+  methods: {
+    createMovieItem(par) {
+      this.movies.push(par);
+    },
   },
 };
 </script>

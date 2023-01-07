@@ -16,7 +16,10 @@
         :value="viewers"
         @input="viewers = $event.target.value"
       />
-      <button class="btn btn-outline-dark" type="submit" @click="changeHandler">
+      <button
+        class="btn btn-outline-dark"
+        @click="changeHandler"
+        type="submit">
         Qo'shish
       </button>
     </form>
@@ -33,13 +36,15 @@ export default {
   },
   methods: {
     changeHandler() {
-      const newMovie = {
+      const newMovieItem = {
         name: this.name,
         viewers: this.viewers,
         favourite: false,
         like: false,
       };
-      console.log(newMovie);
+      this.$emit('createMovieItem',newMovieItem)
+      this.name = "";
+      this.viewers = "";
     },
   },
 };
