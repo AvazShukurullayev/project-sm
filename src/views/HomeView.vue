@@ -7,7 +7,7 @@
           <SearchPanel />
           <FilterMovie />
         </div>
-        <MovieList />
+        <MovieList :movies="movies" />
         <MovieAddForm />
       </div>
     </div>
@@ -23,6 +23,30 @@ import MovieAddForm from "@/components/movie-add-form/MovieAddForm.vue";
 export default {
   name: "HomeView",
   components: { AppInfo, SearchPanel, FilterMovie, MovieList, MovieAddForm },
+  data() {
+    return {
+      movies: [
+        {
+          name: "Omar",
+          viewers: 811,
+          favourite: false,
+          like: false,
+        },
+        {
+          name: "Empire of Osman",
+          viewers: 1411,
+          favourite: true,
+          like: false,
+        },
+        {
+          name: "Ertugrul",
+          viewers: 751,
+          favourite: false,
+          like: true,
+        },
+      ],
+    };
+  },
 };
 </script>
 
