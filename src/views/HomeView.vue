@@ -2,7 +2,10 @@
   <div class="home font-monospace">
     <div class="container">
       <div class="content">
-        <AppInfo />
+        <AppInfo
+          :allMoviesCount="movies.length"
+          :favouriteMoviesCount="movies.filter((c) => c.favourite).length"
+        />
         <div class="search-panel">
           <SearchPanel />
           <FilterMovie />

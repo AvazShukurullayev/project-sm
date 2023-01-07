@@ -1,24 +1,48 @@
 <template>
   <div class="movie-add-form">
     <h3 class="movie-add-form__title">Yangi kinolar qo'shish</h3>
-    <form class="add-form d-flex">
+    <form class="add-form d-flex" @submit.prevent>
       <input
         type="text"
         class="form-control new-form-label"
         placeholder="Qanday kino?"
+        :value="name"
+        @input="name = $event.target.value"
       />
       <input
-        type="text"
+        type="number"
         class="form-control new-form-label"
         placeholder="Necha marotaba ko'rilgan?"
+        :value="viewers"
+        @input="viewers = $event.target.value"
       />
-      <button class="btn btn-outline-dark" type="submit">Qo'shish</button>
+      <button class="btn btn-outline-dark" type="submit" @click="changeHandler">
+        Qo'shish
+      </button>
     </form>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      name: "",
+      viewers: "",
+    };
+  },
+  methods: {
+    changeHandler() {
+      const newMovie = {
+        name: this.name,
+        viewers: this.viewers,
+        favourite: false,
+        like: false,
+      };
+      console.log(newMovie);
+    },
+  },
+};
 </script>
 
 <style scoped lang="scss">
@@ -28,7 +52,7 @@ export default {};
   background-color: #fcfaf5;
   border-radius: 4px;
   box-shadow: 15px 15px 15px rgba($color: #000000, $alpha: 0.15);
-  &__title{
+  &__title {
     margin-bottom: 1rem;
   }
 }
