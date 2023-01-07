@@ -10,7 +10,11 @@
           <SearchPanel />
           <FilterMovie />
         </div>
-        <MovieList :movies="movies" @onLike="onLikeHandler" />
+        <MovieList
+          :movies="movies"
+          @onToggle="onToggleHandler"
+          @onRemove="onRemoveHandler"
+        />
         <MovieAddForm @createMovieItem="createMovieItem" />
       </div>
     </div>
@@ -39,7 +43,7 @@ export default {
         {
           name: "Empire of Osman",
           viewers: 1411,
-          favourite: true,
+          favourite: false,
           like: false,
           id: 2,
         },
@@ -47,7 +51,7 @@ export default {
           name: "Ertugrul",
           viewers: 751,
           favourite: false,
-          like: true,
+          like: false,
           id: 3,
         },
       ],
@@ -57,13 +61,17 @@ export default {
     createMovieItem(par) {
       this.movies.push(par);
     },
-    onLikeHandler(par) {
-      this.movies.map((element) => {
-        if (element.id === par) {
-          element.like = !element.like;
+    onToggleHandler({ id, prop }) {
+      this.movies = this.movies.map((element) => {
+        if (element.id === id) {
+          return { ...element, [prop]: !element[prop] };
         }
         return element;
       });
+      console.log(this.movies);
+    },
+    onRemoveHandler(id) {
+      this.movies = this.movies.filter((element) => element.id !== id);
     },
   },
 };

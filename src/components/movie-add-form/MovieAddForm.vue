@@ -1,13 +1,14 @@
 <template>
   <div class="movie-add-form">
     <h3 class="movie-add-form__title">Yangi kinolar qo'shish</h3>
-    <form class="add-form d-flex" @submit.prevent>
+    <form class="add-form d-flex" @submit.prevent="changeHandler">
       <input
         type="text"
         class="form-control new-form-label"
         placeholder="Qanday kino?"
         :value="name"
         @input="name = $event.target.value"
+        required
       />
       <input
         type="number"
@@ -15,10 +16,9 @@
         placeholder="Necha marotaba ko'rilgan?"
         :value="viewers"
         @input="viewers = $event.target.value"
+        required
       />
-      <button class="btn btn-outline-dark" @click="changeHandler" type="submit">
-        Qo'shish
-      </button>
+      <button class="btn btn-outline-dark" type="submit">Qo'shish</button>
     </form>
   </div>
 </template>
@@ -33,6 +33,7 @@ export default {
   },
   methods: {
     changeHandler() {
+      if (!this.name || !this.viewers) return;
       const newMovieItem = {
         name: this.name,
         viewers: this.viewers,
