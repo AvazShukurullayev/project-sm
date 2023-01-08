@@ -55,6 +55,7 @@ export default {
           id: 3,
         },
       ],
+      term: "",
     };
   },
   methods: {
@@ -72,6 +73,12 @@ export default {
     },
     onRemoveHandler(id) {
       this.movies = this.movies.filter((element) => element.id !== id);
+    },
+    onSearchHandler(arr, term) {
+      if (term.length === 0) {
+        return arr;
+      }
+      return arr.filter((element) => element.toLowercase().indexOf(term) > -1);
     },
   },
 };
