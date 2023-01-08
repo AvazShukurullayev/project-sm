@@ -3,12 +3,37 @@
     type="text"
     class="form-control search-input"
     placeholder="Kinolarni qidirish..."
-    @input="$emit('onInputHandler',$event.target.value)"
+    :value="term"
+    @input="changeHandler"
   />
+  <!-- <input
+    type="text"
+    class="form-control search-input"
+    placeholder="Kinolarni qidirish..."
+    @input="$emit('onInputHandler',$event.target.value)"
+  />  because it was my way-->
 </template>
 
 <script>
-export default {};
+export default {
+  props: {
+    updateTermHandler: {
+      type: Function,
+      required: true,
+    },
+  },
+  data() {
+    return {
+      term: "",
+    };
+  },
+  methods: {
+    changeHandler(e) {
+      this.term = e.target.value;
+      this.updateTermHandler(this.term);
+    },
+  },
+};
 </script>
 
 <style scoped lang="scss">
