@@ -7,11 +7,11 @@
           :favouriteMoviesCount="movies.filter((c) => c.favourite).length"
         />
         <div class="search-panel">
-          <SearchPanel />
+          <SearchPanel   />
           <FilterMovie />
         </div>
         <MovieList
-          :movies="movies"
+          :movies="onSearchHandler(movies, term)"
           @onToggle="onToggleHandler"
           @onRemove="onRemoveHandler"
         />
@@ -62,6 +62,7 @@ export default {
     createMovieItem(par) {
       this.movies.push(par);
     },
+    // shetta sal tushunarsiz
     onToggleHandler({ id, prop }) {
       this.movies = this.movies.map((element) => {
         if (element.id === id) {
@@ -78,7 +79,7 @@ export default {
       if (term.length === 0) {
         return arr;
       }
-      return arr.filter((element) => element.toLowercase().indexOf(term) > -1);
+      return arr.filter((element) => element.name.toLowerCase().indexOf(term) > -1);
     },
   },
 };
