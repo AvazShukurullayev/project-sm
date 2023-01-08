@@ -6,16 +6,16 @@
         type="text"
         class="form-control new-form-label"
         placeholder="Qanday kino?"
-        :value="name"
         @input="name = $event.target.value"
+        :value="name"
         required
       />
       <input
         type="number"
         class="form-control new-form-label"
         placeholder="Necha marotaba ko'rilgan?"
-        :value="viewers"
         @input="viewers = $event.target.value"
+        :value="viewers"
         required
       />
       <button class="btn btn-outline-dark" type="submit">Qo'shish</button>

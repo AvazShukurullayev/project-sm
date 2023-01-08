@@ -7,7 +7,7 @@
           :favouriteMoviesCount="movies.filter((c) => c.favourite).length"
         />
         <div class="search-panel">
-          <SearchPanel   />
+          <SearchPanel @onInputHandler="onInputHandler" />
           <FilterMovie />
         </div>
         <MovieList
@@ -79,7 +79,12 @@ export default {
       if (term.length === 0) {
         return arr;
       }
-      return arr.filter((element) => element.name.toLowerCase().indexOf(term) > -1);
+      return arr.filter(
+        (element) => element.name.toLowerCase().indexOf(term) > -1
+      );
+    },
+    onInputHandler(par) {
+      this.term = par;
     },
   },
 };
