@@ -95,6 +95,9 @@ export default {
       this.term = par;
     }, because it was my way */
   },
+  updateFilterHandler(filter) {
+    this.filter = filter;
+  },
   onFilterHandler(arr, filter) {
     switch (filter) {
       case "popular":
@@ -104,9 +107,6 @@ export default {
       default:
         return arr;
     }
-  },
-  updateFilterHandler(filter) {
-    this.filter = filter;
   },
 };
 </script>
