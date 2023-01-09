@@ -9,10 +9,13 @@
         <div class="search-panel">
           <SearchPanel :updateTermHandler="updateTermHandler" />
           <!-- <SearchPanel @onInputHandler="onInputHandler" /> because it was my way -->
-          <FilterMovie />
+          <FilterMovie
+            :updateFilterHandler="updateFilterHandler"
+            :filterName="filter"
+          />
         </div>
         <MovieList
-          :movies="onSearchHandler(movies, term)"
+          :movies="onFilterHandler(onSearchHandler(movies, term), filter)"
           @onToggle="onToggleHandler"
           @onRemove="onRemoveHandler"
         />
@@ -57,6 +60,7 @@ export default {
         },
       ],
       term: "",
+      filter: "all",
     };
   },
   methods: {
@@ -90,6 +94,19 @@ export default {
     /*  onInputHandler(par) {
       this.term = par;
     }, because it was my way */
+  },
+  onFilterHandler(arr, filter) {
+    switch (filter) {
+      case "popular":
+        return arr.filter((c) => c.like);
+      case "mostViewers":
+        return arr.filter((c) => c.viewers > 500);
+      default:
+        return arr;
+    }
+  },
+  updateFilterHandler(filter) {
+    this.filter = filter;
   },
 };
 </script>
