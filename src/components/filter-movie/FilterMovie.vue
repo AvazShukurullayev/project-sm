@@ -2,27 +2,13 @@
   <div class="filter-movie">
     <div class="btn-group">
       <button
+        v-for="btn in filterButtons"
+        type="button"
         class="btn"
-        :class="[filterName === 'all' ? 'btn-dark' : 'btn-outline-dark']"
-        @click="filterHandler('all')"
+        :class="[filterName === btn.name ? 'btn-dark' : 'btn-outline-dark']"
+        @click="filterHandler(btn.name)"
       >
-        Barcha kinolar
-      </button>
-      <button
-        class="btn"
-        :class="[filterName === 'popular' ? 'btn-dark' : 'btn-outline-dark']"
-        @click="filterHandler('popular')"
-      >
-        Mashhur kinolar
-      </button>
-      <button
-        class="btn"
-        :class="[
-          filterName === 'mostViewers' ? 'btn-dark' : 'btn-outline-dark',
-        ]"
-        @click="filterHandler('mostViewers')"
-      >
-        Eng ko'p ko'rilgan kinolar
+        {{ btn.title }}
       </button>
     </div>
   </div>
@@ -42,6 +28,20 @@ export default {
   },
   data() {
     return {
+      filterButtons: [
+        {
+          title: "Barcha kinolar",
+          name: "all",
+        },
+        {
+          title: "Mashxur kinolar",
+          name: "popular",
+        },
+        {
+          title: "Eng ko'p ko'rilgan kinolar",
+          name: "mostViewers",
+        },
+      ],
       filter: "all",
     };
   },

@@ -51,7 +51,7 @@ export default {
   &-label {
     line-height: 35px;
     font-size: 20px;
-    max-width: 450px;
+    max-width: 550px;
     width: 100%;
     cursor: pointer;
   }
