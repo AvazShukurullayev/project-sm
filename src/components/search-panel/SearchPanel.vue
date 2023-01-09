@@ -1,6 +1,5 @@
 <template>
-  <input
-    type="text"
+  <MyInput
     class="form-control search-input"
     placeholder="Kinolarni qidirish..."
     :value="term"
@@ -15,6 +14,7 @@
 </template>
 
 <script>
+import MyInput from "../ui-components/MyInput.vue";
 export default {
   props: {
     updateTermHandler: {
@@ -22,6 +22,7 @@ export default {
       required: true,
     },
   },
+  components: { MyInput },
   data() {
     return {
       term: "",

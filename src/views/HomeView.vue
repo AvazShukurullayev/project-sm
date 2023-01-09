@@ -6,14 +6,14 @@
           :allMoviesCount="movies.length"
           :favouriteMoviesCount="movies.filter((c) => c.favourite).length"
         />
-        <div class="search-panel">
+        <Box>
           <SearchPanel :updateTermHandler="updateTermHandler" />
           <!-- <SearchPanel @onInputHandler="onInputHandler" /> because it was my way -->
           <FilterMovie
             :updateFilterHandler="updateFilterHandler"
             :filterName="filter"
           />
-        </div>
+        </Box>
         <MovieList
           :movies="onFilterHandler(onSearchHandler(movies, term), filter)"
           @onToggle="onToggleHandler"
@@ -31,9 +31,18 @@ import SearchPanel from "@/components/search-panel/SearchPanel.vue";
 import FilterMovie from "@/components/filter-movie/FilterMovie.vue";
 import MovieList from "@/components/movie-list/MovieList.vue";
 import MovieAddForm from "@/components/movie-add-form/MovieAddForm.vue";
+
+import Box from "@/components/ui-components/Box.vue";
 export default {
   name: "HomeView",
-  components: { AppInfo, SearchPanel, FilterMovie, MovieList, MovieAddForm },
+  components: {
+    AppInfo,
+    SearchPanel,
+    FilterMovie,
+    MovieList,
+    MovieAddForm,
+    Box,
+  },
   data() {
     return {
       movies: [
@@ -134,11 +143,5 @@ export default {
 </script>
 
 <style lang="scss">
-.search-panel {
-  margin: 1.5rem 0;
-  padding: 1.5rem;
-  background-color: #fcfaf5;
-  border-radius: 4px;
-  box-shadow: 15px 15px 15px rgba($color: #000000, $alpha: 0.15);
-}
+
 </style>

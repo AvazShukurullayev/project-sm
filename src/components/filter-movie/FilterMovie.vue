@@ -1,20 +1,20 @@
 <template>
   <div class="filter-movie">
     <div class="btn-group">
-      <button
+      <MyButton
         v-for="btn in filterButtons"
-        type="button"
-        class="btn"
+        :key="btn.name"
         :class="[filterName === btn.name ? 'btn-dark' : 'btn-outline-dark']"
         @click="filterHandler(btn.name)"
       >
         {{ btn.title }}
-      </button>
+      </MyButton>
     </div>
   </div>
 </template>
 
 <script>
+import MyButton from "../ui-components/MyButton.vue";
 export default {
   props: {
     updateFilterHandler: {
@@ -26,6 +26,7 @@ export default {
       required: true,
     },
   },
+  components: { MyButton },
   data() {
     return {
       filterButtons: [

@@ -1,16 +1,15 @@
 <template>
-  <div class="movie-add-form">
+  <Box class="movie-add-form">
     <h3 class="movie-add-form__title">Yangi kinolar qo'shish</h3>
     <form class="add-form d-flex" @submit.prevent="changeHandler">
-      <input
-        type="text"
+      <MyInput
         class="form-control new-form-label"
         placeholder="Qanday kino?"
         @input="name = $event.target.value"
         :value="name"
         required
       />
-      <input
+      <MyInput
         type="number"
         class="form-control new-form-label"
         placeholder="Necha marotaba ko'rilgan?"
@@ -18,13 +17,18 @@
         :value="viewers"
         required
       />
-      <button class="btn btn-outline-dark" type="submit">Qo'shish</button>
+      <MyButton class="btn-outline-dark" type="submit">Qo'shish</MyButton>
     </form>
-  </div>
+  </Box>
 </template>
 
 <script>
+import Box from "../ui-components/Box.vue";
+import MyInput from "../ui-components/MyInput.vue";
+import MyButton from "../ui-components/MyButton.vue";
 export default {
+  name: "MovieAddForm",
+  components: { Box, MyInput, MyButton },
   data() {
     return {
       name: "",
@@ -50,14 +54,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.movie-add-form {
-  margin: 1.5rem 0;
-  padding: 1.5rem;
-  background-color: #fcfaf5;
-  border-radius: 4px;
-  box-shadow: 15px 15px 15px rgba($color: #000000, $alpha: 0.15);
-  &__title {
-    margin-bottom: 1rem;
-  }
+.movie-add-form__title__title {
+  margin-bottom: 1rem;
 }
 </style>
