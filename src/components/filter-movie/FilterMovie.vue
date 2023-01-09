@@ -3,21 +3,23 @@
     <div class="btn-group">
       <button
         class="btn"
-        :class="[filterName === 'all' ? 'btn-dark' :'btn-outline-dark']"
+        :class="[filterName === 'all' ? 'btn-dark' : 'btn-outline-dark']"
         @click="filterHandler('all')"
       >
         Barcha kinolar
       </button>
       <button
         class="btn"
-        :class="[filterName === 'popular' ? 'btn-dark': 'btn-outline-dark']"
+        :class="[filterName === 'popular' ? 'btn-dark' : 'btn-outline-dark']"
         @click="filterHandler('popular')"
       >
         Mashhur kinolar
       </button>
       <button
         class="btn"
-        :class="[filterName === 'mostViewers' ? 'btn-dark': 'btn-outline-dark']"
+        :class="[
+          filterName === 'mostViewers' ? 'btn-dark' : 'btn-outline-dark',
+        ]"
         @click="filterHandler('mostViewers')"
       >
         Eng ko'p ko'rilgan kinolar
