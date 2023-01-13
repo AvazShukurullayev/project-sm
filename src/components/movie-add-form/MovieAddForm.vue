@@ -14,7 +14,7 @@
         class="form-control new-form-label"
         placeholder="Necha marotaba ko'rilgan?"
         @input="viewers = $event.target.value"
-        :value="viewers"
+        :name="viewers"
         required
       />
       <MyButton class="btn-outline-dark" type="submit">Qo'shish</MyButton>
