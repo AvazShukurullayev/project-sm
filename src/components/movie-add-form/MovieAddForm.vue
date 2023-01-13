@@ -2,19 +2,20 @@
   <Box class="movie-add-form">
     <h3 class="movie-add-form__title">Yangi kinolar qo'shish</h3>
     <form class="add-form d-flex" @submit.prevent="changeHandler">
-      <MyInput
+      <input
+        type="text"
         class="form-control new-form-label"
         placeholder="Qanday kino?"
-        @input="name = $event.target.value"
         :value="name"
+        @input="name = $event.target.value"
         required
       />
-      <MyInput
+      <input
         type="number"
         class="form-control new-form-label"
         placeholder="Necha marotaba ko'rilgan?"
+        :value="viewers"
         @input="viewers = $event.target.value"
-        :name="viewers"
         required
       />
       <MyButton class="btn-outline-dark" type="submit">Qo'shish</MyButton>
